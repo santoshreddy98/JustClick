@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block head %}
+<style media="screen">
+html{
+  background-image: url(https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAm1AAAAJGJjYzVkMWEzLTQ0NmYtNDcyZS1iNmM5LWI0MjRkZjVkYzEwOA.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  body{
+    background-color: transparent
+  }
+</style>
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<div class="container text-center" style="width:30rem;background-color:transparent">
+  <h4>Signup form</h4>
+  <form class="form-control" method="POST" style="border-color:transparent;background-color:transparent">
+    {% csrf_token %}
+    <div class="input-group mb-3">{{form.username}}
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">First and Last Name</span>
+      </div>
+      {{form.first_name}}
+      {{form.last_name}}
+    </div>
+    <div class="input-group mb-3">{{form.email}}
+    </div>
+    <div class="input-group mb-3">{{form.password1}}
+    </div>
+    <div class="input-group mb-3">{{form.password2}}
+    </div>
+    <br>
+      <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

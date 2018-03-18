@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block head %}
+<style media="screen">
+html{
+  background-image: url(https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAm1AAAAJGJjYzVkMWEzLTQ0NmYtNDcyZS1iNmM5LWI0MjRkZjVkYzEwOA.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  body{
+    background-color: transparent
+  }
+</style>
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<div class="container text-center" style="width:30rem;background-color:transparent">
+  {% if form.errors %}
+<p><strong>Oh Snap! </strong> You've entered wrong username or password. Please note that all fields are case senstive. </h3>
+{% endif %}
+{% if user.is_authenticated %}
+<h1 style="color:white">You're already logged in.</h1>
+{% else %}
+  <h4>Login</h4>
+  <form class="form-control" method="POST" style="border-color:transparent;background-color:transparent">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+  <!-- <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">@</span>
+  </div> -->
+      <label for="id_username" class="sr-only">Username</label>
+        <input type="text" name="username" class="form-control" id="id_username" placeholder="Username" required>
+</div>
+<div class="input-group mb-3">
+<!-- <div class="input-group-prepend">
+<span class="input-group-text" id="basic-addon1"> <i class="ion-key"></i> </span>
+</div> -->
+  <label for="id_username" class="sr-only">Password</label>
+    <input type="password" name="password" class="form-control" id="id_password" placeholder="Password" required>
+</div>
+      <button type="submit" class="btn">Sign in</button>
+  </form>
+  <h4 style="color:white">Or</h4>
+  <a href="{% url 'signup' %}" class="btn btn-secondary">Sign Up</a>
+  {% endif %}
+</div>
+
+{% endblock %}

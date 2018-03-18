@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+  {% block head %}
+  <style media="screen">
+  html{
+    background-image: url(http://www.somepitching.com/wp-content/uploads/2018/02/Good-Contemporary-Office-Desk.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+    body{
+      background-color: transparent
+    }
+  </style>
+  <br>
+<div class="container text-center" style="background-color:black;opacity:0.8;color:white">
+  <div class="card" style="background-color:black;color:white">
+    <div class="card-body">
+      <h4>{{user.get_full_name}}</h4>
+      {% if user.userprofile.qualif %}
+      <h6>{{user.userprofile.qualif}}</h4>
+      {% else %}
+      <h4>Add or update your profile info</h4>
+      {% endif %}
+      <p>{{user.userprofile.description}}</h4>
+      <h4>{{user.userprofile.category}}</h4>
+      <h5>{{user.userprofile.phone}}</h4>
+      <h6>{{user.email}}</h4>
+        <a href="{% url 'edit' %}" class="btn btn-success">Edit Profile</a>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+
+  {% endblock %}
